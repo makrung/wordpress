@@ -281,3 +281,138 @@ function hello_elementor_get_theme_notifications(): ThemeNotifications {
 }
 
 hello_elementor_get_theme_notifications();
+
+function show_teachers_and_students() {
+    $args = array(
+        'meta_query' => array(
+            array(
+                'key'     => 'wp_capabilities',
+                'value'   => 'um_custom_role_2', // รหัสบทบาทของอาจารย์ใน Ultimate Member
+                'compare' => 'LIKE'
+            )
+        ),
+        'orderby' => 'display_name',
+        'order'   => 'ASC'
+    );
+    $teachers = get_users($args);
+
+    if (!empty($teachers)) {
+        $output = '<ul>';
+        foreach ($teachers as $teacher) {
+            $teacher_id = $teacher->ID;
+            $student_count = count(get_users(array(
+                'meta_query' => array(
+                    array(
+                        'key'     => 'advisor_id',
+                        'value'   => $teacher_id,
+                        'compare' => '='
+                    ),
+                    array(
+                        'key'     => 'wp_capabilities',
+                        'value'   => 'um_custom_role_1', // รหัสบทบาทของนักศึกษาใน Ultimate Member
+                        'compare' => 'LIKE'
+                    )
+                )
+            )));
+
+            $output .= '<li>' . esc_html($teacher->display_name) . ' - ที่ปรึกษานักศึกษา: ' . $student_count . ' / 6 คน</li>';
+        }
+        $output .= '</ul>';
+    } else {
+        $output = '<p>ไม่มีอาจารย์ในระบบ</p>';
+    }
+
+    return $output;
+}
+
+add_shortcode('show_teachers_students', 'show_teachers_and_students');
+function add_student_to_teacher() {
+    if (!is_user_logged_in()) {
+        return '<p>กรุณาเข้าสู่ระบบ</p>';
+    }
+
+    $current_user = wp_get_current_user();
+    
+    // เปลี่ยนจาก 'teacher' เป็น 'um_custom_role_2'
+    if (!in_array('um_custom_role_2', $current_user->roles)) {
+        return '<p>คุณไม่มีสิทธิ์เพิ่มนักศึกษา</p>';
+    }
+
+    if (isset($_POST['student_username'])) {
+        $student_username = sanitize_text_field($_POST['student_username']);
+        $student = get_user_by('login', $student_username);
+
+        if ($student) {
+            update_user_meta($student->ID, 'advisor_id', $current_user->ID);
+            return '<p>เพิ่มนักศึกษาสำเร็จ!</p>';
+        } else {
+            return '<p>ไม่พบนักศึกษาในระบบ</p>';
+        }
+    }
+
+    ob_start();
+    ?>
+    <form method="post">
+        <label for="student_username">กรอก Username นักศึกษา:</label>
+        <input type="text" name="student_username" required>
+        <button type="submit">เพิ่มนักศึกษา</button>
+    </form>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('add_student_form', 'add_student_to_teacher');
+
+function show_my_students() {
+    if (!is_user_logged_in()) {
+        return '<p>กรุณาเข้าสู่ระบบ</p>';
+    }
+
+    $current_user = wp_get_current_user();
+
+    // เช็คว่าเป็นอาจารย์หรือไม่
+    if (!in_array('um_custom_role_2', (array) $current_user->roles)) {
+        return '<p>คุณไม่มีสิทธิ์ดูข้อมูลนี้</p>';
+    }
+
+    // ค้นหานักศึกษาที่มี advisor_id เป็น user ID ของอาจารย์
+    $students = get_users(array(
+        'meta_query' => array(
+            array(
+                'key'   => 'advisor_id',
+                'value' => $current_user->ID,
+                'compare' => '='
+            ),
+            array(
+                'key'   => 'wp_capabilities', // Ultimate Member ใช้ wp_capabilities
+                'value' => 'um_custom_role_1',
+                'compare' => 'LIKE'
+            ),
+        )
+    ));
+
+    if (!empty($students)) {
+        $output = '<h3>รายชื่อนักศึกษาที่ปรึกษาโดย ' . esc_html($current_user->display_name) . '</h3>';
+        $output .= '<ul>';
+        foreach ($students as $student) {
+            $output .= '<li>' . esc_html($student->display_name) . ' (' . esc_html($student->user_email) . ')</li>';
+        }
+        $output .= '</ul>';
+    } else {
+        $output = '<p>คุณยังไม่มีนักศึกษาในสังกัด</p>';
+    }
+
+    return $output;
+}
+
+add_shortcode('show_my_students', 'show_my_students');
+
+
+function debug_user_roles() {
+    $current_user = wp_get_current_user();
+    return '<pre>' . print_r($current_user->roles, true) . '</pre>';
+}
+add_shortcode('debug_roles', 'debug_user_roles');
+
+
+
+

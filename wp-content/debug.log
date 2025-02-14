@@ -163,6 +163,7 @@
 [30-Jan-2025 10:39:29 UTC]   Automatic plugin updates starting...
 [30-Jan-2025 10:39:29 UTC]   Automatic plugin updates complete.
 [30-Jan-2025 10:39:30 UTC] Automatic updates complete.
+<<<<<<< HEAD
 [12-Feb-2025 10:30:08 UTC] Automatic updates starting...
 [12-Feb-2025 10:30:09 UTC]   Automatic plugin updates starting...
 [12-Feb-2025 10:30:09 UTC]   Automatic plugin updates complete.
@@ -171,3 +172,149 @@
 [12-Feb-2025 10:30:10 UTC] Automatic updates complete.
 [12-Feb-2025 10:41:03 UTC] PHP Warning:  Attempt to read property "title" on null in /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-customize-widgets.php on line 923
 [12-Feb-2025 10:50:37 UTC] PHP Warning:  Attempt to read property "title" on null in /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-customize-widgets.php on line 923
+=======
+[14-Feb-2025 14:45:25 UTC] Automatic updates starting...
+[14-Feb-2025 14:45:26 UTC]   Automatic plugin updates starting...
+[14-Feb-2025 14:45:26 UTC]   Automatic plugin updates complete.
+[14-Feb-2025 14:45:27 UTC]   Automatic theme updates starting...
+[14-Feb-2025 14:45:27 UTC]   Automatic theme updates complete.
+[14-Feb-2025 14:45:27 UTC] Automatic updates complete.
+[14-Feb-2025 15:16:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-blog-header.php(13): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/index.php(17): require('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-blog-header.php(13): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/index.php(17): require('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-blog-header.php(13): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/index.php(17): require('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-blog-header.php(13): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/index.php(17): require('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-blog-header.php(13): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/index.php(17): require('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-blog-header.php(13): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/index.php(17): require('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:16:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9137
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin.php(34): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-admin/edit.php(10): require_once('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9137
+[14-Feb-2025 15:18:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9136
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin-ajax.php(22): require_once('/Applications/M...')
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9136
+[14-Feb-2025 15:18:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9136
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin.php(34): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-admin/edit.php(10): require_once('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9136
+[14-Feb-2025 15:22:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function add_shortcode() in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php:9136
+Stack trace:
+#0 /Applications/MAMP/htdocs/wordpress/wp-settings.php(114): require()
+#1 /Applications/MAMP/htdocs/wordpress/wp-config.php(103): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wordpress/wp-load.php(50): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wordpress/wp-admin/admin.php(34): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wordpress/wp-admin/edit.php(10): require_once('/Applications/M...')
+#5 {main}
+  thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9136
+[14-Feb-2025 15:40:19 UTC] PHP Warning:  Undefined array key "um_custom_role_2" in /Applications/MAMP/htdocs/wordpress/wp-content/themes/hello-elementor/functions.php on line 294
+>>>>>>> be9435d (Add user management shortcodes for teachers and students; include user role checks and forms)
