@@ -326,6 +326,7 @@ function show_teachers_and_students() {
 }
 
 add_shortcode('show_teachers_students', 'show_teachers_and_students');
+
 function add_student_to_teacher() {
     if (!is_user_logged_in()) {
         return '<p>กรุณาเข้าสู่ระบบ</p>';
@@ -333,8 +334,8 @@ function add_student_to_teacher() {
 
     $current_user = wp_get_current_user();
     
-    // เปลี่ยนจาก 'teacher' เป็น 'um_custom_role_2'
-    if (!in_array('um_custom_role_2', $current_user->roles)) {
+    // เช็คว่าเป็นอาจารย์ (um_custom_role_2) หรือ ผู้ประสานงาน (um_custom_role_3) หรือไม่
+    if ( !in_array('um_custom_role_2', $current_user->roles) && !in_array('um_custom_role_3', $current_user->roles) ) {
         return '<p>คุณไม่มีสิทธิ์เพิ่มนักศึกษา</p>';
     }
 
@@ -362,6 +363,7 @@ function add_student_to_teacher() {
 }
 add_shortcode('add_student_form', 'add_student_to_teacher');
 
+
 function show_my_students() {
     if (!is_user_logged_in()) {
         return '<p>กรุณาเข้าสู่ระบบ</p>';
@@ -370,7 +372,7 @@ function show_my_students() {
     $current_user = wp_get_current_user();
 
     // เช็คว่าเป็นอาจารย์หรือไม่
-    if (!in_array('um_custom_role_2', (array) $current_user->roles)) {
+	if (!in_array('um_custom_role_2', (array) $current_user->roles) && !in_array('um_custom_role_3', (array) $current_user->roles)) {
         return '<p>คุณไม่มีสิทธิ์ดูข้อมูลนี้</p>';
     }
 

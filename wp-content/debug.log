@@ -318,3 +318,15 @@ Stack trace:
   thrown in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 9136
 [14-Feb-2025 15:40:19 UTC] PHP Warning:  Undefined array key "um_custom_role_2" in /Applications/MAMP/htdocs/wordpress/wp-content/themes/hello-elementor/functions.php on line 294
 >>>>>>> be9435d (Add user management shortcodes for teachers and students; include user role checks and forms)
+[15-Feb-2025 05:09:47 UTC] Automatic updates starting...
+[15-Feb-2025 05:09:47 UTC]   Automatic plugin updates starting...
+[15-Feb-2025 05:09:47 UTC]   Automatic plugin updates complete.
+[15-Feb-2025 05:09:48 UTC]   Automatic theme updates starting...
+[15-Feb-2025 05:09:48 UTC]   Automatic theme updates complete.
+[15-Feb-2025 05:09:48 UTC] Automatic updates complete.
+[15-Feb-2025 05:14:46 UTC] PHP Parse error:  syntax error, unexpected token "return" in /Applications/MAMP/htdocs/wordpress/wp-content/themes/hello-elementor/functions.php on line 339
+[15-Feb-2025 05:30:02 UTC] PHP Warning:  Attempt to read property "title" on null in /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-customize-widgets.php on line 923
+[15-Feb-2025 05:35:34 UTC] PHP Parse error:  syntax error, unexpected token "!" in /Applications/MAMP/htdocs/wordpress/wp-content/themes/hello-elementor/functions.php on line 374
+[15-Feb-2025 05:35:34 UTC] PHP Notice:  Function _load_textdomain_just_in_time was called <strong>incorrectly</strong>. Translation loading for the <code>hello-elementor</code> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <code>init</code> action or later. โปรดดู <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">การแก้ข้อผิดพลาดใน WordPress</a> สำหรับข้อมูลเพิ่มเติม (ข้อความนี้ถูกเพิ่มมาในรุ่น 6.7.0.) in /Applications/MAMP/htdocs/wordpress/wp-includes/functions.php on line 6114
+[15-Feb-2025 05:35:34 UTC] PHP Warning:  Trying to access array offset on false in /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-recovery-mode-email-service.php on line 367
+[15-Feb-2025 05:35:34 UTC] PHP Warning:  Trying to access array offset on false in /Applications/MAMP/htdocs/wordpress/wp-includes/class-wp-recovery-mode-email-service.php on line 368
