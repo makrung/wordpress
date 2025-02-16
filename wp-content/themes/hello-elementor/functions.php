@@ -369,7 +369,7 @@ function show_my_students() {
         return '<p>กรุณาเข้าสู่ระบบ</p>';
     }
 
-    $current_user = wp_get_current_user();
+    $current_user = wp_get_current_user();//sfafva
 
     // เช็คว่าเป็นอาจารย์หรือไม่
 	if (!in_array('um_custom_role_2', (array) $current_user->roles) && !in_array('um_custom_role_3', (array) $current_user->roles)) {
