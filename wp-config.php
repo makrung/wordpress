@@ -93,7 +93,7 @@ define( 'WP_DEBUG_LOG', true );
 if ( ob_get_length() ) ob_end_clean();
 
 /* That's all, stop editing! Happy publishing. */
-
+@ini_set('zlib.output_compression', 'Off');
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
