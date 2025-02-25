@@ -281,3 +281,195 @@ function hello_elementor_get_theme_notifications(): ThemeNotifications {
 }
 
 hello_elementor_get_theme_notifications();
+
+function show_teachers_and_students() {
+    $args = array(
+        'meta_query' => array(
+            array(
+                'key'     => 'wp_capabilities',
+                'value'   => 'um_custom_role_2', // รหัสบทบาทของอาจารย์ใน Ultimate Member
+                'compare' => 'LIKE'
+            )
+        ),
+        'orderby' => 'display_name',
+        'order'   => 'ASC'
+    );
+    $teachers = get_users($args);
+
+    if (!empty($teachers)) {
+        $output = '<ul>';
+        foreach ($teachers as $teacher) {
+            $teacher_id = $teacher->ID;
+            $student_count = count(get_users(array(
+                'meta_query' => array(
+                    array(
+                        'key'     => 'advisor_id',
+                        'value'   => $teacher_id,
+                        'compare' => '='
+                    ),
+                    array(
+                        'key'     => 'wp_capabilities',
+                        'value'   => 'um_custom_role_1', // รหัสบทบาทของนักศึกษาใน Ultimate Member
+                        'compare' => 'LIKE'
+                    )
+                )
+            )));
+
+            $output .= '<li>' . esc_html($teacher->display_name) . ' - ที่ปรึกษานักศึกษา: ' . $student_count . ' / 6 คน</li>';
+        }
+        $output .= '</ul>';
+    } else {
+        $output = '<p>ไม่มีอาจารย์ในระบบ</p>';
+    }
+
+    return $output;
+}
+
+add_shortcode('show_teachers_students', 'show_teachers_and_students');
+
+function add_student_to_teacher() {
+    if (!is_user_logged_in()) {
+        return '<p>กรุณาเข้าสู่ระบบ</p>';
+    }
+
+    $current_user = wp_get_current_user();
+    
+    // เช็คว่าเป็นอาจารย์ (um_custom_role_2) หรือ ผู้ประสานงาน (um_custom_role_3) หรือไม่
+    if (!in_array('um_custom_role_2', (array) $current_user->roles) && !in_array('um_custom_role_3', (array) $current_user->roles)) {
+        return '<p>คุณไม่มีสิทธิ์เพิ่มนักศึกษา</p>';
+    }
+
+    $message = '';
+
+    if (isset($_POST['student_username'])) {
+        $student_username = sanitize_text_field($_POST['student_username']);
+        $student = get_user_by('login', $student_username);
+
+        if ($student) {
+            $advisor_id = get_user_meta($student->ID, 'advisor_id', true);
+
+            // เช็คว่านักศึกษามีอาจารย์ที่ปรึกษาแล้วหรือไม่
+            if (!empty($advisor_id)) {
+                $message = '<p style="color: red;">นักศึกษาคนนี้มีที่ปรึกษาแล้ว</p>';
+            } else {
+                // นับจำนวนนักศึกษาที่อาจารย์ดูแลอยู่
+                $students_count = count(get_users(array(
+                    'meta_query' => array(
+                        array(
+                            'key'     => 'advisor_id',
+                            'value'   => $current_user->ID,
+                            'compare' => '='
+                        ),
+                    )
+                )));
+
+                if ($students_count >= 6) {
+                    $message = '<p style="color: red;">คุณมีนักศึกษาเต็มจำนวนแล้ว (สูงสุด 6 คน)</p>';
+                } else {
+                    update_user_meta($student->ID, 'advisor_id', $current_user->ID);
+                    $message = '<p style="color: green;">เพิ่มนักศึกษาสำเร็จ!</p>';
+                }
+            }
+        } else {
+            $message = '<p style="color: red;">ไม่พบนักศึกษาในระบบ</p>';
+        }
+    }
+
+    ob_start();
+    ?>
+    <form method="post">
+        <label for="student_username">กรอก Username นักศึกษา:</label>
+        <input type="text" name="student_username" required>
+        <button type="submit">เพิ่มนักศึกษา</button>
+    </form>
+    <?php echo $message; ?>
+    <?php
+    return ob_get_clean();
+}
+
+add_shortcode('add_student_form', 'add_student_to_teacher');
+
+
+
+function show_my_students() {
+    if (!is_user_logged_in()) {
+        return '<p>กรุณาเข้าสู่ระบบ</p>';
+    }
+
+    $current_user = wp_get_current_user();
+
+    // เช็คว่าเป็นอาจารย์หรือผู้ประสานงาน
+    if (!in_array('um_custom_role_2', (array) $current_user->roles) && !in_array('um_custom_role_3', (array) $current_user->roles)) {
+        return '<p>คุณไม่มีสิทธิ์ดูข้อมูลนี้</p>';
+    }
+
+    // ลบนักศึกษา (ถ้ามีการส่งค่า)
+    if (isset($_POST['remove_student_id'])) {
+        $student_id = intval($_POST['remove_student_id']);
+        $student = get_userdata($student_id);
+        if ($student) {
+            $advisor_id = get_user_meta($student->ID, 'advisor_id', true);
+            if ($advisor_id == $current_user->ID) {
+                delete_user_meta($student->ID, 'advisor_id');
+                echo '<p style="color: green;">ลบนักศึกษาเรียบร้อยแล้ว</p>';
+            } else {
+                echo '<p style="color: red;">คุณไม่มีสิทธิ์ลบนักศึกษาคนนี้</p>';
+            }
+        } else {
+            echo '<p style="color: red;">ไม่พบนักศึกษาในระบบ</p>';
+        }
+    }
+
+    // ดึงข้อมูลนักศึกษาที่อยู่ภายใต้การดูแลของอาจารย์
+    $students = get_users(array(
+        'meta_query' => array(
+            array(
+                'key'   => 'advisor_id',
+                'value' => $current_user->ID,
+                'compare' => '='
+            ),
+            array(
+                'key'   => 'wp_capabilities',
+                'value' => 'um_custom_role_1',
+                'compare' => 'LIKE'
+            ),
+        )
+    ));
+
+    ob_start();
+    ?>
+    <h3>รายชื่อนักศึกษาที่ปรึกษาโดย <?php echo esc_html($current_user->display_name); ?></h3>
+    
+    <?php if (!empty($students)) : ?>
+        <ul>
+            <?php foreach ($students as $student) : ?>
+                <li>
+                    <?php echo esc_html($student->display_name); ?> (<?php echo esc_html($student->user_email); ?>)
+                    <form method="post" style="display:inline;">
+                        <input type="hidden" name="remove_student_id" value="<?php echo esc_attr($student->ID); ?>">
+                        <button type="submit" style="color: red; background: none; border: none; cursor: pointer;">ลบ</button>
+                    </form>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else : ?>
+        <p>คุณยังไม่มีนักศึกษาในสังกัด</p>
+    <?php endif; ?>
+
+    <?php
+    return ob_get_clean();
+}
+
+add_shortcode('show_my_students', 'show_my_students');
+
+
+
+function debug_user_roles() {
+    $current_user = wp_get_current_user();
+    return '<pre>' . print_r($current_user->roles, true) . '</pre>';
+}
+add_shortcode('debug_roles', 'debug_user_roles');
+
+
+
+
