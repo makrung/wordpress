@@ -90,7 +90,7 @@ define( 'WP_DEBUG_LOG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+if ( ob_get_length() ) ob_end_clean();
 
 /* That's all, stop editing! Happy publishing. */
 
